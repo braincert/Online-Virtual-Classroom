@@ -10,8 +10,6 @@ Try a free hands-on DEMO at [https://www.braincert.com/try-virtual-classroom](ht
 
 If this is your first time here, we recommend you to [signup for your API key](https://www.braincert.com/app/virtualclassroom) first. 
 
-Already signed up and logged in? View [your API key](https://www.braincert.com/app/virtualclassroom) now.
-
 ================
 
 # REST API
