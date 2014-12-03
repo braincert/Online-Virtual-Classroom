@@ -6,8 +6,8 @@ Easily integrate BrainCert Virtual classroom in your website, CMS, LMS, or app.
 BrainCert Virtual Classroom is tailor-made to deliver live classes, meetings, webinars, and conferences to audience anywhere!
 Schedule Live Classes, Collect Payments, Record Sessions - all from within your own website.
 
-If this is your first time here, we recommend you to signup for your API key first. 
-Already signed up and logged in? View your API key now.
+If this is your first time here, we recommend you to [signup for your API key](https://www.braincert.com/app/virtualclassroom) first. 
+Already signed up and logged in? View [your API key](https://www.braincert.com/app/virtualclassroom) now.
 
 # REST API
 BrainCert provides a RESTful interface to the resources in the Virtual Classroom e.g. classes, video recordings, shopping cart, etc. Once your API key has authenticated a BrainCert user, it can call a REST API endpoint using the obtained access token and get the corresponding resources. A simple example is getting the authenticated user's list of live classes using the API endpoint. 
