@@ -1,10 +1,12 @@
 Online Virtual Classroom
 ================
 
-Easily integrate BrainCert Virtual classroom in your website, CMS, LMS, or app.
+Easily integrate [BrainCert Virtual classroom](https://www.braincert.com) in your website, CMS, LMS, or app.
 
 BrainCert Virtual Classroom is tailor-made to deliver live classes, meetings, webinars, and conferences to audience anywhere!
 Schedule Live Classes, Collect Payments, Record Sessions - all from within your own website.
+
+Try a Free hands-on DEMO at [https://www.braincert.com/try-virtual-classroom](https://www.braincert.com/try-virtual-classroom) (No Login required)
 
 If this is your first time here, we recommend you to [signup for your API key](https://www.braincert.com/app/virtualclassroom) first. 
 
