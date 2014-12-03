@@ -1,4 +1,4 @@
-virtualclassroom
+Online Virtual Classroom
 ================
 
 Easily integrate BrainCert Virtual classroom in your website, CMS, LMS, or app.
