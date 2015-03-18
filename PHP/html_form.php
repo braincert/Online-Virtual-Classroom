@@ -441,25 +441,9 @@ jQuery(document).ready(function () {
        		<input type="text" placeholder="Max. attendees" id="seat_attendees" name="seat_attendees" >
             </div>
        	</div>
-         <div class="control-group"> 
-          	<label class="span1 hasTip"  title="Keywords">Keywords:</label>
-            <div class="controls">
-       		<input type="text" placeholder="Keywords" id="keywords" name="keywords" >
-            </div>
-       	</div>
-         <div class="control-group"> 
-          	<label class="span1 hasTip"  title="Phone conference bridge">Phone conference bridge:</label>
-            <div class="controls">
-       		 <input type="radio" name="enableaudioconference" value="1">Yes
-			<input type="radio" name="enableaudioconference" value="0">No
-            </div>
-       	</div>
-        <div class="control-group"> 
-          	<label class="span1 hasTip"  title="Enter your access code">Enter your access code:</label>
-            <div class="controls">
-            <input type="text" placeholder="Conference Code" id="conferencecode" name="conferencecode" >
-            </div>
-       	</div>
+         
+         
+        
         
         </div>
         <div>
