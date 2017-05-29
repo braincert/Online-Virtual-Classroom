@@ -58,6 +58,11 @@
 			<a href="html_form.php?show=removeprice">Remove Price</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a href="html_form.php?show=getlaunchurl">Get launch url</a>
+		</td>
+	</tr>
 </table>
 
  
@@ -66,7 +71,7 @@
 $show = '';
 if(isset($_REQUEST['task'])){
 require_once ('api-library.php'); 
-$bc = new Braincert("7UrWbMlO5sAx1fmVlPHK");
+$bc = new Braincert("CLGny53iAzrbrOTf9Agj");
 
 	switch($_REQUEST['task']){
 		case 'getClassList':
@@ -131,6 +136,14 @@ $bc = new Braincert("7UrWbMlO5sAx1fmVlPHK");
 	    print_r($removeprice);
 		exit;
 		break;
+
+		case 'getlaunchurl':
+		$getlaunchurl = $bc -> getlaunchurl($_POST);
+		// echo '<pre>';
+	    print_r($getlaunchurl);
+		exit;
+		break;
+		
 		
 		case 'createprice':
 		$createprice = $bc -> getPrice($_POST);
@@ -184,10 +197,20 @@ function displayresult(result,type){
 			var node = new PrettyJSON.view.Node({ 
 			el:el.result, 
 			data:o
-		});dhgfdasderwezxcvdfwerweradfreewrtrty
+		});
 	}
 }
+
+function setweekday(el) {
+	if(! jQuery(el).parent('label').closest(".active").length ) {
+		jQuery(el).parent('label').addClass('active');
+	}else{
+		jQuery(el).parent('label').removeClass('active');
+	}
+}
+
 jQuery(document).ready(function () {
+
  jQuery('#save_button').click( function(event) {
 	var task = jQuery('#task').val();
 	if(task == 'getClassList'){
@@ -216,8 +239,40 @@ jQuery(document).ready(function () {
 });
 </script>            
 
-<?php if($_REQUEST['show'] == 'schedule'){ ?>
+<?php if($_REQUEST['show'] == 'schedule'){ 
+	require_once ('api-library.php'); 
+	$bc = new Braincert("CLGny53iAzrbrOTf9Agj");
+	
+	
+?>
  <form class="form-horizontal form-validate" id="adminForm" method="post" enctype="multipart/form-data">
+ 	<?php if (strpos($bc->apiendpoint, 'v2') !== false){ ?> 
+    <div class="control-group">
+            <label class="span1 hasTip"  title="Class end time">Set Location:</label>
+            <div class="controls">
+            <select class="form-control valid" name="location_id" id="location_id">
+                <option value="1">US East (Dallas, Texas)</option>
+                <option value="8">US East (New York)</option>
+                <option value="2">US West (San Francisco, CA)</option>
+                <option value="4">Europe (Frankfurt, Germany)</option>
+                <option value="5">Europe (London)</option>
+                <option value="6">Asia Pacific - Bangalore</option>
+                <option value="7">Asia pacific - Singapore</option>
+            </select>
+            </div>
+        </div>
+    <?php }else{ ?>
+        <div class="control-group">
+            <label class="span1 hasTip"  title="Class end time">Set Location:</label>
+            <div class="controls">
+                <select class="location form-control" id="location" name="location">
+                    <option value="us_east">US East (Dallas, Texas)</option>
+                    <option value="asia_pacific">Asia Pacific (Singapore)</option>
+                </select>
+            </div>
+        </div>    
+    <?php } ?>
+
 		<div class="control-group">
           	<label for="title" class="span1 hasTip" title="Classroom Title">Title:</label>
             <div class="controls">
@@ -387,9 +442,42 @@ jQuery(document).ready(function () {
             <option value="3">5 Days(Mon-Fri)</option>
             <option value="4">Weekly</option>
             <option value="5">Once every month</option>
+            <option value="6">On selected days</option>
             </select>
             </div>
 		</div>
+		<div class="control-group weeklytotaldays">
+                <label class="control-label"></label>
+                <div class="weekdays_label">
+                <label for="su">
+                    <input id="su" onclick="setweekday(this);" name="weekdays[]" type="checkbox" value="1" style="display:none;"> Sun
+                </label>
+
+                <label for="mo">
+                    <input id="mo"  onclick="setweekday(this);" name="weekdays[]" type="checkbox" value="2" style="display:none;"> Mon
+                </label>
+
+                <label for="tue">
+                    <input id="tue" onclick="setweekday(this);" name="weekdays[]"  type="checkbox" value="3" style="display:none;"> Tue
+                </label>
+
+                <label for="wed">
+                    <input id="wed" onclick="setweekday(this);" name="weekdays[]" type="checkbox" value="4" style="display:none;"> Wed
+                </label>
+
+                <label for="thu">
+                    <input id="thu"  onclick="setweekday(this);" name="weekdays[]" type="checkbox" value="5" style="display:none;"> Thu
+                </label>
+
+                <label for="fri">
+                    <input id="fri"  onclick="setweekday(this);" name="weekdays[]"  type="checkbox" value="6" style="display:none;"> Fri
+                </label>
+
+                <label for="sat">
+                    <input id="sat"  onclick="setweekday(this);" name="weekdays[]"  type="checkbox" value="7" style="display:none;"> Sat
+                </label>
+                </div>
+             </div> 
         <div class="control-group">
         <label class="control-label" style="margin-left: 6px;">Ends:</label>
 	        <div class="controls">
@@ -413,6 +501,32 @@ jQuery(document).ready(function () {
 	       
     	    </div>
         </div>
+
+         <div class="control-group">
+            <label class="span1 hasTip" title="Record Class">Allow attendees to change interface language:</label>
+            <div class="controls">
+            <input type="radio" id="allow_change_language_1" name="allow_change_interface_language" value="1">Yes
+            <input type="radio" id="allow_change_language_2" name="allow_change_interface_language" value="0">No
+            </div>
+        </div>
+          <?php           
+               $langarray = array(1=> 'arabic',2=> 'bosnian',3=> 'bulgarian',4=> 'catalan',5=> 'chinese-simplified',6=> 'chinese-traditional',7=> 'croatian',8=> 'czech',9=> 'danish',10=> 'dutch',11=> 'english',12=> 'estonian',13=> 'finnish',14=> 'french',15=> 'german',16=> 'greek',17=> 'haitian-creole',18=> 'hebrew',19=> 'hindi',20=> 'hmong-daw',21=> 'hungarian',22=> 'indonesian',23=> 'italian',24=> 'japanese',25=> 'kiswahili',26=> 'klingon',27=> 'korean',28=> 'lithuanian',29=> 'malayalam',30=> 'malay',31=> 'maltese',32=> 'norwegian-bokma',33=> 'persian',34=> 'polish',35=> 'portuguese',36=> 'romanian',37=> 'russian',38=> 'serbian',39=> 'slovak',40=> 'slovenian',41=> 'spanish',42=> 'swedish',43=> 'tamil',44=> 'telugu',45=> 'thai',46=> 'turkish',47=> 'ukrainian',48=> 'urdu',49=> 'vietnamese',50=> 'welsh');
+               ?>
+
+
+        <div class="control-group" style="clear:both;" id="force_language">
+                    <label class="span1 hasTip"  title="Set currency for shopping cart">Force Interface Language:</label>
+                    <div class="controls">
+                    <select class="in-selection required form-control" id="language" name="language">
+    			    <?php  foreach($langarray as $key=>$val){  ?>
+                         <option value="<?php echo $key;?>"><?php echo $val;?></option>
+                    <?php } ?>
+    	            </select>
+                <br />
+                <br />
+                   </div>
+        </div>
+
         <div class="control-group"> 
           	<label class="span1 hasTip"  title="Class end time">Record this class:</label>
             <div class="controls">
@@ -420,6 +534,25 @@ jQuery(document).ready(function () {
 			<input type="radio" name="record" value="0">No
             </div>
        	</div>
+       	<div class="control-group record_auto">
+            <label class="span1 hasTip" title="Record Class">Start recording automatically when class starts:</label>
+            <div class="controls">
+            <input type="radio" name="start_recording_auto" value="2">
+                    Yes&nbsp; &nbsp;    
+            <input type="radio" name="start_recording_auto" value="1">
+                    No
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="span1 hasTip" title="Record Class">Classroom type:</label>
+            <div class="controls">
+            <input type="radio" class="required" name="classroom_type" id="classroom_typeyes" value="0"> whiteboard, audio/video, chat&nbsp; &nbsp;  
+            <input type="radio"  class="required" name="classroom_type" id="classroom_typeno" value="1">
+                    Whiteboard only
+            </div>
+        </div>
+
         <div class="control-group"> 
           	<label class="span1 hasTip"  title="Class end time">Who can see?:</label>
             <div class="controls">
@@ -441,9 +574,25 @@ jQuery(document).ready(function () {
        		<input type="text" placeholder="Max. attendees" id="seat_attendees" name="seat_attendees" >
             </div>
        	</div>
-         
-         
-        
+         <div class="control-group"> 
+          	<label class="span1 hasTip"  title="Keywords">Keywords:</label>
+            <div class="controls">
+       		<input type="text" placeholder="Keywords" id="keywords" name="keywords" >
+            </div>
+       	</div>
+         <div class="control-group"> 
+          	<label class="span1 hasTip"  title="Phone conference bridge">Phone conference bridge:</label>
+            <div class="controls">
+       		 <input type="radio" name="enableaudioconference" value="1">Yes
+			<input type="radio" name="enableaudioconference" value="0">No
+            </div>
+       	</div>
+        <div class="control-group"> 
+          	<label class="span1 hasTip"  title="Enter your access code">Enter your access code:</label>
+            <div class="controls">
+            <input type="text" placeholder="Conference Code" id="conferencecode" name="conferencecode" >
+            </div>
+       	</div>
         
         </div>
         <div>
@@ -563,6 +712,60 @@ jQuery(document).ready(function () {
     </form>
      
  <?php } ?>
+
+ <?php if($_REQUEST['show'] == 'getlaunchurl'){ ?>
+ <form class="form-horizontal form-validate" id="adminForm" method="post" enctype="multipart/form-data">
+
+		<div class="control-group">
+          	<label class="span1 hasTip" for="title"  title="Class id">Class id:</label>
+            <div class="controls">
+          	<input type="text" placeholder="Class id" id="class_id" name="class_id">
+            </div>
+        </div>    
+
+        <div class="control-group">  
+          	<label class="span1 hasTip"  title="Recurring class">Is Teacher:</label>
+            <div class="controls">
+			<input type="radio" name="isTeacher" value="1">Yes    
+			<input type="radio" name="isTeacher" value="0">No 
+            </div>
+       	</div>
+
+       	<div class="control-group">
+          	<label class="span1 hasTip" for="User Name"  title="User Name">User Name:</label>
+            <div class="controls">
+          	<input type="text" placeholder="User Name" id="userName" name="userName">
+            </div>
+        </div> 
+
+        <div class="control-group">
+          	<label class="span1 hasTip" for="Course Name"  title="Course Name">Course Name:</label>
+            <div class="controls">
+          	<input type="text" placeholder="Course Name" id="courseName" name="courseName">
+            </div>
+        </div> 
+
+        <div class="control-group">
+          	<label class="span1 hasTip" for="Lesson Name"  title="Lesson Name">Lesson Name:</label>
+            <div class="controls">
+          	<input type="text" placeholder="Lesson Name" id="lessonName" name="lessonName">
+            </div>
+        </div> 
+
+        
+       	
+
+         <input type="hidden" id="task" name="task" value="getlaunchurl"/>
+         <input type="hidden" id="format" name="format" value=""/>
+         <div class="control-group">
+          <div class="controls">
+         <button class="btn btn-primary" id="save_button" type="button" style="font-weight: bold;">Get Launch url</button>
+         </div>
+         </div>
+    </form>
+     
+ <?php } ?>
+
  <?php if($_REQUEST['show'] == 'creatediscount'){ 
 // echo date ('h:i:s');
  ?>
@@ -814,5 +1017,18 @@ td {
 .controls input[type="radio"] {
     margin-bottom: 8px;
     margin-right: 3px;
+}
+.weekdays_label > label {
+    border: 1px solid;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    margin: 5px;
+    text-align: center;
+    width: 40px;
+
+}
+.weekdays_label label.active {
+    color: red;
 }
 </style>

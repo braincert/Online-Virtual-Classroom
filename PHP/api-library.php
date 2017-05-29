@@ -1,8 +1,8 @@
 <?php
 class Braincert
 {
-	private $api_key;
-	private $apiendpoint = "https://api.braincert.com/v1";
+	public $api_key;
+	public $apiendpoint = "https://api.braincert.com/v2";
 	 
 	public function __construct ($api_key)
 	{
@@ -17,12 +17,46 @@ class Braincert
 
 	public function getclass($data=array())
 	{
+		$data['weekdays'] = implode(',', $data['weekdays']);
+	
+		if($data['record'] == '1' && $data['start_recording_auto'] == '2'){
+			$data['record'] = '2';
+		}
+
+		if($data['allow_change_interface_language']==0){
+			$data['isLang']=$data['language'];
+	 	}else{
+	 		$data['isLang']=11;
+	 	}
+
+
+	 	if($data['location_id']){
+	 		$data['isRegion'] = $data['location_id'] ;
+	 	}
+
+		if($data['location']){
+			$data['isRegion'] = $data['location'] ;
+		}	
+
+		$data['isBoard']=$data['classroom_type'];
+ 	
+ 		unset($data['location_id']);
+ 		unset($data['location']);
+		unset($data['start_recording_auto']);
+		unset($data['allow_change_interface_language']);
+		unset($data['classroom_type']);
+		unset($data['language']);
+
 		$data['task'] = 'schedule';
 		return $this -> sendHttpRequest($data);
 	}
 	public function getClassList($data=array())
 	{
-		$data['task'] = 'listclass';
+		if($data['class_id']){
+			$data['task'] = 'getclass';	
+		}else{
+			$data['task'] = 'listclass';
+		}
 		return $this -> sendHttpRequest($data);
 	}
 	public function getPrice($data=array())
@@ -73,6 +107,12 @@ class Braincert
 		$data['task'] = 'removeprice';
 		return $this -> sendHttpRequest($data);
 	}
+	public function getlaunchurl($data=array())
+	{
+		$data['task'] = 'getclasslaunch';
+		return $this -> sendHttpRequest($data);
+	}
+	
 	public function removeclass($data=array())
 	{
 		$data['task'] = 'removeclass';
@@ -96,7 +136,6 @@ class Braincert
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
-		
 
 		return $result;
 	}
