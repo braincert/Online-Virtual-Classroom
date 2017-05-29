@@ -1,7 +1,5 @@
 Virtual Classroom API - PHP Sample Libraries
 https://www.braincert.com
-
-Discuss it in our forums: https://www.braincert.com/support/discussions/latest
 ----------------------------------------------------------------------------------------
 
 
