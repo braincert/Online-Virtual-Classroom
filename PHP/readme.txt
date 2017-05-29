@@ -9,5 +9,6 @@ $bc = new Braincert("7UrWbMlO5sAx1fmVlPHK");
 
 
 - Read API documentation here: https://www.braincert.com/developer/virtualclassroom-api
+- Knowledge base - https://www.braincert.com/braincert-support/kb
 - Generate API Key: https://www.braincert.com/app/virtualclassroom
 - Try hands-on live demo of Virtual Classroom: https://www.braincert.com/try-virtual-classroom
