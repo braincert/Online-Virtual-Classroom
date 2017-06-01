@@ -246,33 +246,28 @@ jQuery(document).ready(function () {
 	
 ?>
  <form class="form-horizontal form-validate" id="adminForm" method="post" enctype="multipart/form-data">
- 	<?php if (strpos($bc->apiendpoint, 'v2') !== false){ ?> 
+ 
     <div class="control-group">
             <label class="span1 hasTip"  title="Class end time">Set Location:</label>
             <div class="controls">
             <select class="form-control valid" name="location_id" id="location_id">
-                <option value="1">US East (Dallas, Texas)</option>
-                <option value="8">US East (New York)</option>
-                <option value="2">US West (San Francisco, CA)</option>
-                <option value="4">Europe (Frankfurt, Germany)</option>
-                <option value="5">Europe (London)</option>
-                <option value="6">Asia Pacific - Bangalore</option>
-                <option value="7">Asia pacific - Singapore</option>
-            </select>
+				<option value="1">US East (Dallas, TX)</option>
+				<option value="3">US East (New York)</option>
+				<option value="8">US East (Miami, FL)</option>
+				<option value="2">US West (Los Angeles, CA)</option>
+				<option value="4">Europe (Frankfurt, Germany)</option>
+				<option value="5">Europe (London)</option>
+				<option value="9">Europe (Milan, Italy)</option>
+				<option value="13">Europe (Paris, France)</option>
+				<option value="6">Asia Pacific (Bangalore, India)</option>
+				<option value="7">Asia Pacific (Singapore)</option>
+				<option value="10">Asia Pacific (Tokyo, Japan)</option>
+				<option value="14">Asia Pacific (Beijing, China)</option>
+				<option value="11">Middle East (Dubai, UAE)</option>
+				<option value="12">Australia (Sydney)</option>
+			</select>
             </div>
         </div>
-    <?php }else{ ?>
-        <div class="control-group">
-            <label class="span1 hasTip"  title="Class end time">Set Location:</label>
-            <div class="controls">
-                <select class="location form-control" id="location" name="location">
-                    <option value="us_east">US East (Dallas, Texas)</option>
-                    <option value="asia_pacific">Asia Pacific (Singapore)</option>
-                </select>
-            </div>
-        </div>    
-    <?php } ?>
-
 		<div class="control-group">
           	<label for="title" class="span1 hasTip" title="Classroom Title">Title:</label>
             <div class="controls">
@@ -567,6 +562,20 @@ jQuery(document).ready(function () {
 			<input type="radio" name="ispaid" value="1">Paid 
             </div>
        	</div>
+       	
+       	<div class="control-group">
+              	<label class="span1 hasTip"  title="category">Currency:</label>
+                <div class="controls">
+				<select id="currency" name="currency" class="form-control valid">
+					<option value="aud">AUD ($)</option>
+					<option value="cad">CAD ($)</option>
+					<option value="eur">EUR (&euro;)</option>
+					<option value="gbp">GBP (&pound;)</option>
+					<option value="nzd">NZD ($)</option> 
+					<option value="usd" selected="selected">USD ($)</option> 
+				</select>
+                </div>
+		</div>
         
         <div class="control-group"> 
           	<label class="span1 hasTip"  title="Max. attendees">Max. attendees:</label>
@@ -580,20 +589,6 @@ jQuery(document).ready(function () {
        		<input type="text" placeholder="Keywords" id="keywords" name="keywords" >
             </div>
        	</div>
-         <div class="control-group"> 
-          	<label class="span1 hasTip"  title="Phone conference bridge">Phone conference bridge:</label>
-            <div class="controls">
-       		 <input type="radio" name="enableaudioconference" value="1">Yes
-			<input type="radio" name="enableaudioconference" value="0">No
-            </div>
-       	</div>
-        <div class="control-group"> 
-          	<label class="span1 hasTip"  title="Enter your access code">Enter your access code:</label>
-            <div class="controls">
-            <input type="text" placeholder="Conference Code" id="conferencecode" name="conferencecode" >
-            </div>
-       	</div>
-        
         </div>
         <div>
         <input type="hidden" id="task" name="task" value="schedule"/>

@@ -109,6 +109,7 @@ class Braincert
 	}
 	public function getlaunchurl($data=array())
 	{
+		$data['userId']=rand();
 		$data['task'] = 'getclasslaunch';
 		return $this -> sendHttpRequest($data);
 	}
