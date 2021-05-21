@@ -1,5 +1,9 @@
-Online Virtual Classroom
+Online Virtual Classroom (PHP SDK)
 ================
+
+BrainCert's Virtual Classroom PHP SDK provides code samples, processes, and guides that developers can use and integrate into their own apps. This SDK will be the building blocks of your application, whereas the VC API is the language of its requests.
+
+## About BrainCert Virtual Classroom
 
 BrainCert's next-generation [HTML5 Virtual Classroom](https://www.braincert.com/online-virtual-classroom) is designed for seamless synchronous and asynchronous collaboration capabilities between presenter (teacher) and attendees (students). BrainCert offers over 10 low-latency datacenter locations worldwide (including China connectivity) - the largest secure global infrastructure, enabling you to schedule and launch live virtual classroom sessions no matter where you or your attendees may be! 
 
@@ -8,6 +12,7 @@ To use this application, sign up for your free [BrainCert](https://www.braincert
 See [Developer documentation](https://www.braincert.com/docs/api/vc/) for more info. BrainCert provides a RESTful interface to the resources in the Virtual Classroom e.g. classes, video recordings, shopping cart, etc.
 
 ![BrainCert Virtual Classroom API](https://static-assets.braincert.com/img/vc-app-new-mobile-desktops-5.jpg)
+
 
 ## HTML5 Virtual Classroom features:
 * WebRTC based Ultra HD audio and video conferencing with great resiliency and multiple full HD participants.
