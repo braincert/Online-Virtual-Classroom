@@ -29,4 +29,4 @@ See [Developer documentation](https://www.braincert.com/docs/api/vc/) for more i
 
 
 ## About BrainCert
-BrainCert (https://www.braincert.com) is a cloud-based all-in-one educational platform that comes integrated with 4 core platforms in one unified solution - courses platform, online testing platform, award-winning virtual classroom, and content management system. The result - significant cost savings, increasing productivity, and secure, seamless and enhanced user experience across all platforms.
+BrainCert (https://www.braincert.com) is a cloud-based all-in-one unified training platform that comes integrated with 4 core platforms in one unified solution - courses platform, online testing platform, award-winning virtual classroom, and content management system. The result - significant cost savings, increasing productivity, and secure, seamless and enhanced user experience across all platforms.
