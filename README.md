@@ -1,28 +1,27 @@
 Online Virtual Classroom
 ================
 
-Easily integrate [BrainCert Virtual classroom](https://www.braincert.com/online-virtual-classroom) in your website, CMS, LMS, or app.
+BrainCert's next-generation [HTML5 Virtual Classroom](https://www.braincert.com/online-virtual-classroom) is designed for seamless synchronous and asynchronous collaboration capabilities between presenter (teacher) and attendees (students). BrainCert offers over 10 low-latency datacenter locations worldwide (including China connectivity) - the largest secure global infrastructure, enabling you to schedule and launch live virtual classroom sessions no matter where you or your attendees may be! 
 
-BrainCert Virtual Classroom is tailor-made to deliver live classes, meetings, webinars, and conferences to audience anywhere!
-Schedule Live Classes, Collect Payments, Record Sessions - all from within your own website.
+To use this application, sign up for your free [BrainCert](https://www.braincert.com) account  and register your [API key](https://www.braincert.com/app/virtualclassroom). 
 
-Try hands-on live demo of Virtual Classroom: [https://www.braincert.com/try-virtual-classroom](https://www.braincert.com/try-virtual-classroom) (No Login required)
-
-If this is your first time here, we recommend you to [signup for your API key](https://www.braincert.com/app/virtualclassroom) first. 
+See [Developer documentation](https://www.braincert.com/docs/api/vc/) for more info. BrainCert provides a RESTful interface to the resources in the Virtual Classroom e.g. classes, video recordings, shopping cart, etc.
 
 ![BrainCert Virtual Classroom API](https://static-assets.braincert.com/img/vc-app-new-mobile-desktops-5.jpg)
 
-# REST API
-BrainCert provides a RESTful interface to the resources in the Virtual Classroom e.g. classes, video recordings, shopping cart, etc. Once your API key has authenticated a BrainCert user, it can call a REST API endpoint using the obtained access token and get the corresponding resources. A simple example is getting the authenticated user's list of live classes using the API endpoint. 
+## HTML5 Virtual Classroom features:
+* WebRTC based Ultra HD audio and video conferencing with great resiliency and multiple full HD participants.
+* Support for WebRTC in macOS and iOS devices using Safari 12+ browser. Android support using Opera and Chrome browser. Desktop support using Chrome and Firefox browsers.
+* Available in 50 languages. Use API calls to force an interface language or allow attendees to select a language.
+* Cloud-based session recording without the need to install any other software or browser plugins. Download recorded lessons as 720p HD file, share and play online for attendees. 
+* Record classes manually or automatically and download multiple recordings in a session or combine all in to one file - all using a simple API call.
+* Group HTML5-based HD Screen Sharing in tabbed interface. Enhance your computer-based training classes by sharing entire screen or just a single application. No software downloads or installations necessary.
+* Multiple interactive whiteboards. The staple of all classroom instruction is the whiteboard that supports drawing tool, LaTEX math equations, draw shapes & symbols, line tools, save snapshots, and share documents in multiple tabs.
+* Share documents & presentations. Stream Audio/Video files securely.
+* Wolfram|Alpha gives you access to the world's facts and data and calculates answers across a range of topics, including science, engineering, mathematics.
+* Equations editor, group chat, and powerful annotation feature to draw over uploaded documents & presentations. 
+* Responsive whiteboard fits any screen and browser resolution for seamless same viewing experience by all attendees.
 
-If you are new to REST, you can understand the basics at http://en.wikipedia.com/wiki/REST. Please note that the endpoints support JSON (recommended) and XML. The documentation allows you to get responses using JSON or XML where relevant.
 
-Virtual Classroom API supports scheduling and launching live classes, record sessions in HD (MP4 format), HD audio/video conference, desktop sharing, group chat, file sharing, interactive whiteboards, share presentations, sell classes using shopping cart, create discount coupons - all from within your own website.
-BrainCert Virtual Classroom
-
-
-# Documentation
-
-The documentation allows you to get responses using JSON or XML where relevant.
-
-Read API documentation at https://www.braincert.com/developer/virtualclassroom-api
+## About BrainCert
+BrainCert (https://www.braincert.com) is a cloud-based all-in-one educational platform that comes integrated with 4 core platforms in one unified solution - courses platform, online testing platform, award-winning virtual classroom, and content management system. The result - significant cost savings, increasing productivity, and secure, seamless and enhanced user experience across all platforms.
